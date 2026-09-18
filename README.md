@@ -43,6 +43,34 @@ Stop Simulation: Click the “Stop Simulation” button to end the test.
 Save Circuit: Click “Save” to store your design and code for future use or presentation.
 
 ## Code:
+```
+const int uvPin = A0;     // UV sensor OUT connected to A0
+const int ledPin = 8;     // LED connected to pin 8
+
+int threshold = 500;      // Adjust this value after testing
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int uvValue = analogRead(uvPin);
+
+  Serial.print("UV Value: ");
+  Serial.println(uvValue);
+
+  if (uvValue > threshold) {
+    digitalWrite(ledPin, HIGH);   // LED ON
+  } else {
+    digitalWrite(ledPin, LOW);    // LED OFF
+  }
+
+  delay(1000);
+}
+```
 ## Output:
+<img width="1919" height="1029" alt="image" src="https://github.com/user-attachments/assets/82541c5e-72a7-45fa-ac6e-e6558bba56f1" />
+
 ## Result:
 The simulation successfully measured the distance between the ultrasonic sensor HC-SR04 and the object. The real-time distance values were accurately displayed on the serial monitor in centimeters.
